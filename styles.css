@@ -47,15 +47,9 @@
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
             color: var(--text-dark);
             min-height: 100vh;
-            padding: 3vw;
+            padding: 0.5vw 1vw;
             line-height: 1.6;
             font-weight: 400;
-        }
-
-        @media (min-width: 760px) {
-            body {
-                padding: 20px;
-            }
         }
 
         .container {
@@ -324,7 +318,7 @@
             padding: 3vw 4vw;
             background: var(--gradient-primary);
             border-radius: var(--border-radius);
-            margin-top: var(--section-spacing);
+            margin-top: calc(var(--section-spacing) + 20px);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             color: var(--text-light);
             position: relative;
