@@ -222,7 +222,6 @@
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: var(--border-radius);
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
             opacity: 0;
             transition: var(--transition);
@@ -258,13 +257,87 @@
             transition: var(--transition);
         }
 
-        .product-card:hover .product-image {
-            transform: scale(1.05);
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
         }
 
-        .product-info {
-            padding: var(--product-padding);
-            position: relative;
+        .coming-soon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            backdrop-filter: blur(2px);
+        }
+
+        .coming-soon-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 2.5vw;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @media (min-width: 760px) {
+            .coming-soon-badge {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+                gap: 4px;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+            }
+        }
+
+        .product-card.coming-soon {
+            opacity: 0.8;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .product-card.coming-soon:hover {
+            transform: none;
+            box-shadow: var(--card-shadow);
+        }
+
+        .product-card.coming-soon:hover::before {
+            opacity: 0;
+        }
+
+        .product-card.coming-soon:hover .product-name {
+            color: var(--text-dark);
+        }
+
+        .product-card.coming-soon:hover .product-rating {
+            color: #ffc107;
+        }
+
+        .product-card.coming-soon:hover .product-image {
+            transform: none;
+        }
+
+        .product-info{
+            padding: 5px 5px 0 5px;
         }
 
         .product-name {
